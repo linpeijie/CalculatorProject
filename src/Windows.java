@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Windows extends JFrame{
 	/**
@@ -13,8 +11,8 @@ public class Windows extends JFrame{
 	private JPanel panel;
 	private JPanel pan;
 	private JPanel pan2;
-	JTextField result_TextField;
-	String result;
+	static JTextField result_TextField;
+	static String result;
 	
     public Windows() {
         super();  //引用父类成分
@@ -61,142 +59,51 @@ public class Windows extends JFrame{
     }
     
     public void setButton() {
-       	//数字按钮
+       	//创建按钮事件对象，对按钮时间进行统一管理
+    	    Controller buttonHandler = new Controller();
+    	    //创建按钮，并添加事件
         JButton button0 = new JButton("0");
-        button0.addActionListener(new ActionListener() {  //设置点击事件
-        	    public void actionPerformed(ActionEvent e) {
-        	    	    result += "0"; 
-        	    	    result_TextField.setText(result);
-        	    }
-        });
-        
+        button0.addActionListener(buttonHandler);     //添加事件  
         JButton button1 = new JButton("1");
-        button1.addActionListener(new ActionListener() {
-    	        public void actionPerformed(ActionEvent e) {
-    	        	    result += "1";
-    	    	        result_TextField.setText(result);
-    	        }
-        });
-        
+        button1.addActionListener(buttonHandler);        
         JButton button2 = new JButton("2");
-        button2.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += "2";
-	    	        result_TextField.setText(result);
-	        }
-        });
-        
+        button2.addActionListener(buttonHandler);        
         JButton button3 = new JButton("3");
-        button3.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += "3";
-	    	        result_TextField.setText(result);
-	        }
-        });
-        
+        button3.addActionListener(buttonHandler);        
         JButton button4 = new JButton("4");
-        button4.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += "4";
-	    	        result_TextField.setText(result);
-	        }
-        });
-        
+        button4.addActionListener(buttonHandler);       
         JButton button5 = new JButton("5");
-        button5.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += "5";
-	    	        result_TextField.setText(result);
-	        }
-        });
-        
+        button5.addActionListener(buttonHandler);        
         JButton button6 = new JButton("6");
-        button6.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += "6";
-	    	        result_TextField.setText(result);
-	        }
-        });
-        
+        button6.addActionListener(buttonHandler);        
         JButton button7 = new JButton("7");
-        button7.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += "7";
-	    	        result_TextField.setText(result);
-	        }
-        });
-        
+        button7.addActionListener(buttonHandler);        
         JButton button8 = new JButton("8");
-        button8.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += "8";
-	    	        result_TextField.setText(result);
-	        }
-        });
-        
+        button8.addActionListener(buttonHandler);
         JButton button9 = new JButton("9");   
-        button9.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += "9";
-	    	        result_TextField.setText(result);
-	        }
-        });
+        button9.addActionListener(buttonHandler);
         
-        //加减乘除按键
         JButton buttonDot = new JButton(".");
-        buttonDot.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += ".";
-	    	        result_TextField.setText(result);
-	        }
-        });
-        
+        buttonDot.addActionListener(buttonHandler);        
         JButton buttonPlus = new JButton("+");
-        buttonPlus.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += "+";
-	    	        result_TextField.setText(result);
-	        }
-        });
-        
+        buttonPlus.addActionListener(buttonHandler);        
         JButton buttonMinus = new JButton("-");
-        buttonMinus.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += "-";
-	    	        result_TextField.setText(result);
-	        }
-        });
-        
+        buttonMinus.addActionListener(buttonHandler);        
         JButton buttonMultiply = new JButton("x");
-        buttonMultiply.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += "x";
-	    	        result_TextField.setText(result);
-	        }
-        });
-        
+        buttonMultiply.addActionListener(buttonHandler);
         JButton buttonDivide = new JButton("/");
-        buttonDivide.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += "/";
-	    	        result_TextField.setText(result);
-	        }
-        });
+        buttonDivide.addActionListener(buttonHandler);
         
         //计算按键
         JButton buttonResult = new JButton("=");
-        buttonResult.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	    result += "=";
-	    	        result_TextField.setText(result);
-	        }
-        });
+        buttonResult.addActionListener(buttonHandler);
         
         //clear 按键
-        JButton clear_Button = new JButton("Clear");
+        JButton clearButton = new JButton("Clear");
+        clearButton.addActionListener(buttonHandler);
         
         //添加组件到容器里，网格布局
-        pan2.add(clear_Button,BorderLayout.EAST);
+        pan2.add(clearButton,BorderLayout.EAST);
 	    pan.add(button7);
         pan.add(button8);
         pan.add(button9);
