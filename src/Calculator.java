@@ -4,5 +4,6 @@ public class Calculator {
         Windows windows = new Windows();
         //运行窗体
         windows.setVisible(true);
+        
     }   
 }

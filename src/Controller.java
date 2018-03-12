@@ -72,6 +72,8 @@ public class Controller implements ActionListener{
 		case "=" :
 			Windows.result += "=";
 			Windows.result_TextField.setText(Windows.result);
+			Model model = new Model(Windows.result);
+			model.cal();
 			break;
 		case "Clear" :
 			Windows.result = "";
