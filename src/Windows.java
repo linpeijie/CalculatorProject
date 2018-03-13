@@ -12,7 +12,7 @@ public class Windows extends JFrame{
 	private JPanel pan;
 	private JPanel pan2;
 	static JTextField result_TextField;
-	static String result;
+	
 	
     public Windows() {
         super();  //引用父类成分
@@ -124,10 +124,9 @@ public class Windows extends JFrame{
     }
     
     public void setTextField() {
-       	//文本框和按钮
-        result = "";
+
         //设置文本框的初始值和长度
-        result_TextField = new JTextField(result,19);
+        result_TextField = new JTextField("",19);
         //添加文本框到pan2容器中
         pan2.add(result_TextField,BorderLayout.WEST);
     }
