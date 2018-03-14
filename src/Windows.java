@@ -11,9 +11,12 @@ public class Windows extends JFrame{
 	private JPanel panel;
 	private JPanel pan;
 	private JPanel pan2;
+	private JPanel pan3;
 	static JTextField result_TextField;
 	
-	
+	/**
+	 * 窗口
+	 */
     public Windows() {
         super();  //引用父类成分
         
@@ -26,9 +29,13 @@ public class Windows extends JFrame{
         
     }
     
+    /**
+     *  容器，布局用
+     * @return
+     */
     public JPanel getPanel() {
     	    if(panel == null) {
-    	    	    //大容器，布局用
+    	    	   
     	    	    panel = new JPanel();
     	    	    
     	    	    if(pan2 == null) {
@@ -39,28 +46,39 @@ public class Windows extends JFrame{
         	    }
     	    	    
     	    	    if (pan == null) {
-        	    	    //放置按钮的容器
+        	    	    
     	    	        pan = new JPanel();
-    	    	        //设置该容器的布局 4行4列间隔为5像素
+    	    	        
+    	    	        //设置该容器的布局 4行4列间隔为5像素,pan对象的边距
     	    	        pan.setLayout(new GridLayout(4,4,5,5));
-    	            //设置pan对象的边距
     	            pan.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
     	            
         	    }
     	    	    
-    	        //调用按钮方法
-    	    	    setButton();
+    	    	    if(pan3 == null) {
+    	    	    		pan3 = new JPanel();
+    	    	    		
+    	    	    		pan3.setLayout(new GridLayout(1,2,5,5));
+    	    	    }
+    	    	    
+    	        
+    	    	    setButton();								//调用按钮方法
     	    	    setTextField();
-    	    	    //添加小容器到顶层容器中，完成布局
-    	    	    panel.add(pan2,BorderLayout.NORTH);
-    	        panel.add(pan,BorderLayout.SOUTH); 	        
+    	    	    
+    	    	    panel.add(pan2,BorderLayout.NORTH);		//添加小容器到顶层容器中，完成布局
+    	        panel.add(pan,BorderLayout.SOUTH); 
+    	        panel.add(pan3,BorderLayout.SOUTH); 
     	    }
     	    return panel;
     }
     
+    /**
+     * 创建按钮事件对象，对事件进行统一管理
+     */
     public void setButton() {
-       	//创建按钮事件对象，对按钮时间进行统一管理
+       	
     	    Controller buttonHandler = new Controller();
+    	    
     	    //创建按钮，并添加事件
         JButton button0 = new JButton("0");
         button0.addActionListener(buttonHandler);     //添加事件  
@@ -89,10 +107,14 @@ public class Windows extends JFrame{
         buttonPlus.addActionListener(buttonHandler);        
         JButton buttonMinus = new JButton("-");
         buttonMinus.addActionListener(buttonHandler);        
-        JButton buttonMultiply = new JButton("x");
+        JButton buttonMultiply = new JButton("*");
         buttonMultiply.addActionListener(buttonHandler);
         JButton buttonDivide = new JButton("/");
         buttonDivide.addActionListener(buttonHandler);
+        JButton buttonLeftBracket = new JButton("(");
+        buttonLeftBracket.addActionListener(buttonHandler);
+        JButton buttonRightBracket = new JButton(")");
+        buttonRightBracket.addActionListener(buttonHandler);
         
         //计算按键
         JButton buttonResult = new JButton("=");
@@ -121,13 +143,18 @@ public class Windows extends JFrame{
         pan.add(buttonResult);
         pan.add(buttonPlus);
         
+        pan3.add(buttonLeftBracket);
+        pan3.add(buttonRightBracket);
     }
     
+    /**
+     * pan2
+     */
     public void setTextField() {
-
-        //设置文本框的初始值和长度
-        result_TextField = new JTextField("",19);
-        //添加文本框到pan2容器中
-        pan2.add(result_TextField,BorderLayout.WEST);
+        
+        result_TextField = new JTextField("0",19);				//设置文本框的初始值和长度
+        result_TextField.setHorizontalAlignment(JTextField.RIGHT);
+        
+        pan2.add(result_TextField,BorderLayout.WEST);				//添加文本框到pan2容器中
     }
 }
